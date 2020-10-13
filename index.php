@@ -57,4 +57,6 @@ $APPLICATION->SetTitle("Задание 1");
 		"SORT_ORDER2" => "ASC",
 		"STRICT_SECTION_CHECK" => "N"
 	)
-);?><br bis_size="{&quot;x&quot;:151,&quot;y&quot;:15,&quot;w&quot;:0,&quot;h&quot;:17,&quot;abs_x&quot;:418,&quot;abs_y&quot;:166}"><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+);?>
+
+<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

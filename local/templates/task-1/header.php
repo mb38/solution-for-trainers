@@ -9,5 +9,6 @@
     <link href="<?=SITE_TEMPLATE_PATH?>/styles.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<?$APPLICATION->ShowPanel();?>
+<? $APPLICATION->ShowPanel(); ?>
+
 
