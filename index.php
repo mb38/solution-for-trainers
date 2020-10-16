@@ -2,6 +2,26 @@
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Задание 1");
 ?><?$APPLICATION->IncludeComponent(
+	"bitrix:menu", 
+	"grey_tabs", 
+	array(
+		"ALLOW_MULTI_SELECT" => "N",
+		"CHILD_MENU_TYPE" => "left",
+		"DELAY" => "N",
+		"MAX_LEVEL" => "1",
+		"MENU_CACHE_GET_VARS" => array(
+		),
+		"MENU_CACHE_TIME" => "3600",
+		"MENU_CACHE_TYPE" => "N",
+		"MENU_CACHE_USE_GROUPS" => "Y",
+		"ROOT_MENU_TYPE" => "top",
+		"USE_EXT" => "N",
+		"COMPONENT_TEMPLATE" => "grey_tabs",
+		"MENU_THEME" => "site"
+	),
+	false
+);?><br>
+<?$APPLICATION->IncludeComponent(
 	"bitrix:news.list",
 	"list_news_demo",
 	Array(
@@ -57,6 +77,4 @@ $APPLICATION->SetTitle("Задание 1");
 		"SORT_ORDER2" => "ASC",
 		"STRICT_SECTION_CHECK" => "N"
 	)
-);?>
-
-<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+);?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
