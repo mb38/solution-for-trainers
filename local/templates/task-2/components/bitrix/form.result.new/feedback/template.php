@@ -14,19 +14,16 @@
             {
                 echo $arQuestion["HTML_CODE"];
             }
-            if ($arQuestion == end($arResult["QUESTIONS"])) {
-
-            }
-            else
-            {
+            if ($arQuestion != end($arResult["QUESTIONS"])) {
             ?>
                 <div class="input contact-form__input" >
                     <label class="input__label">
                         <div class="input__label-text"><?=$arQuestion["CAPTION"]?></div>
                         <?=$arQuestion["HTML_CODE"] = str_replace('class="','class="input__input"',$arQuestion["HTML_CODE"])?>
+                        <div class="input__notification" ></div >
                     </label >
                 </div >
-                <?
+            <?
             } continue;
         }
         ?>

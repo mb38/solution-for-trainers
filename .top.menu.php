@@ -13,6 +13,13 @@ $aMenuLinks = Array(
 		Array(), 
 		Array(), 
 		"" 
+	),
+	Array(
+		"task-3", 
+		"/task-3.php", 
+		Array(), 
+		Array(), 
+		"" 
 	)
 );
 ?>
