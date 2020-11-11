@@ -1,29 +1,9 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Задание 1");
+$APPLICATION->SetTitle("Задание 6");
 ?><?$APPLICATION->IncludeComponent(
-	"bitrix:menu", 
-	"grey_tabs", 
-	array(
-		"ALLOW_MULTI_SELECT" => "N",
-		"CHILD_MENU_TYPE" => "left",
-		"DELAY" => "N",
-		"MAX_LEVEL" => "1",
-		"MENU_CACHE_GET_VARS" => array(
-		),
-		"MENU_CACHE_TIME" => "3600",
-		"MENU_CACHE_TYPE" => "N",
-		"MENU_CACHE_USE_GROUPS" => "Y",
-		"ROOT_MENU_TYPE" => "top",
-		"USE_EXT" => "N",
-		"COMPONENT_TEMPLATE" => "grey_tabs",
-		"MENU_THEME" => "site"
-	),
-	false
-);?><br>
-<?$APPLICATION->IncludeComponent(
-	"bitrix:news.list",
-	"list_news_demo",
+	"myComponents:newElementList",
+	"",
 	Array(
 		"ACTIVE_DATE_FORMAT" => "d.m.Y",
 		"ADD_SECTIONS_CHAIN" => "Y",
@@ -37,6 +17,7 @@ $APPLICATION->SetTitle("Задание 1");
 		"CACHE_TIME" => "36000000",
 		"CACHE_TYPE" => "A",
 		"CHECK_DATES" => "Y",
+		"COUNT" => "0",
 		"DETAIL_URL" => "",
 		"DISPLAY_BOTTOM_PAGER" => "Y",
 		"DISPLAY_DATE" => "Y",
@@ -47,12 +28,14 @@ $APPLICATION->SetTitle("Задание 1");
 		"FIELD_CODE" => array("",""),
 		"FILTER_NAME" => "",
 		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
-		"IBLOCK_ID" => $_REQUEST["ID"],
-		"IBLOCK_TYPE" => "-",
+		"IBLOCK_CODE" => "",
+		"IBLOCK_ID" => "1",
+		"IBLOCK_TYPE" => "task_1_info",
 		"INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
 		"INCLUDE_SUBSECTIONS" => "Y",
+		"MEDIA_PROPERTY" => "",
 		"MESSAGE_404" => "",
-		"NEWS_COUNT" => "6",
+		"NEWS_COUNT" => "20",
 		"PAGER_BASE_LINK_ENABLE" => "N",
 		"PAGER_DESC_NUMBERING" => "N",
 		"PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
@@ -64,6 +47,7 @@ $APPLICATION->SetTitle("Задание 1");
 		"PARENT_SECTION_CODE" => "",
 		"PREVIEW_TRUNCATE_LEN" => "",
 		"PROPERTY_CODE" => array("",""),
+		"SEARCH_PAGE" => "/search/",
 		"SET_BROWSER_TITLE" => "Y",
 		"SET_LAST_MODIFIED" => "N",
 		"SET_META_DESCRIPTION" => "Y",
@@ -71,10 +55,19 @@ $APPLICATION->SetTitle("Задание 1");
 		"SET_STATUS_404" => "N",
 		"SET_TITLE" => "Y",
 		"SHOW_404" => "N",
+		"SHOW_NAV" => "N",
+		"SLIDER_PROPERTY" => "",
 		"SORT_BY1" => "ACTIVE_FROM",
 		"SORT_BY2" => "SORT",
+		"SORT_DIRECTION1" => "ASC",
+		"SORT_DIRECTION2" => "ASC",
+		"SORT_FIELD1" => "ID",
+		"SORT_FIELD2" => "ID",
 		"SORT_ORDER1" => "DESC",
 		"SORT_ORDER2" => "ASC",
-		"STRICT_SECTION_CHECK" => "N"
+		"STRICT_SECTION_CHECK" => "N",
+		"TEMPLATE_THEME" => "blue",
+		"USE_RATING" => "N",
+		"USE_SHARE" => "N"
 	)
 );?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
