@@ -45,6 +45,7 @@ class CIBlockPropertyCProp
         }
         $result .= '<table class="mf-fields-list active">';
 
+
         foreach ($arFields as $code => $arItem){
             if($arItem['TYPE'] === 'string'){
                 $result .= self::showString($code, $arItem['TITLE'], $value, $strHTMLControlName);

@@ -5,22 +5,25 @@ use \Bitrix\Main\Localization\Loc,
 
 Loc::loadMessages(__FILE__);
 
-class newModule extends CModule
+class alpha_beta extends CModule
 {
-    var $MODULE_ID  = 'newModule';
+    var $MODULE_ID  = 'alpha.beta';
 
     function __construct()
     {
         $arModuleVersion = array();
         include __DIR__ . '/version.php';
 
-        $this->MODULE_ID = 'newModule';
+        $this->MODULE_ID = 'alpha.beta';
         $this->MODULE_VERSION = $arModuleVersion['VERSION'];
         $this->MODULE_VERSION_DATE = $arModuleVersion['VERSION_DATE'];
         $this->MODULE_NAME = Loc::getMessage('IEX_CPROP_MODULE_NAME');
         $this->MODULE_DESCRIPTION = Loc::getMessage('IEX_CPROP_MODULE_DESC');
 
-        $this->FILE_PREFIX = 'cprop';
+        $this->PARTNER_NAME = 'alpha.beta';
+        $this->PARTNER_URI = 'https://test.com';
+
+        $this->FILE_PREFIX = 'beta';
         $this->MODULE_FOLDER = str_replace('.', '_', $this->MODULE_ID);
         $this->FOLDER = 'bitrix';
 
@@ -34,18 +37,14 @@ class newModule extends CModule
 
     function DoInstall()
     {
-        global $DOCUMENT_ROOT, $APPLICATION;
+        global $APPLICATION;
         if($this->isVersionD7())
         {
             $this->InstallDB();
             $this->InstallEvents();
             $this->InstallFiles();
 
-            RegisterModule($this->MODULE_ID);
-            $APPLICATION->IncludeAdminFile(
-                "Установка newModule",
-                $DOCUMENT_ROOT."/local/modules/newModule/install/step.php"
-            );
+            \Bitrix\Main\ModuleManager::registerModule($this->MODULE_ID);
         }
         else
         {
@@ -55,32 +54,35 @@ class newModule extends CModule
 
     function DoUninstall()
     {
-        global $DOCUMENT_ROOT, $APPLICATION;
-
-        UnRegisterModule($this->MODULE_ID);
+        \Bitrix\Main\ModuleManager::unRegisterModule($this->MODULE_ID);
 
         $this->UnInstallFiles();
-        $this->UnInstallDB();
-
-        $APPLICATION->IncludeAdminFile(
-            "Удаление newModule",
-            $DOCUMENT_ROOT."/local/modules/newModule/install/unstep.php"
-        );
         $this->UnInstallEvents();
+        $this->UnInstallDB();
     }
 
 
     function InstallDB()
     {
-        RegisterModuleDependences("main", "OnUserTypeBuildList", "newModule", "CCustomTypeHtml", "GetUserTypeDescription");
-
+        RegisterModuleDependences(
+            "main",
+            "OnUserTypeBuildList",
+            "alpha.beta",
+            "CCustomTypeHtml",
+            "GetUserTypeDescription"
+        );
         return true;
     }
 
     function UnInstallDB()
     {
-        UnRegisterModuleDependences("main", "OnUserTypeBuildList", "newModule", "CCustomTypeHtml", "GetUserTypeDescription");
-
+        UnRegisterModuleDependences(
+            "main",
+            "OnUserTypeBuildList",
+            "alpha.beta",
+            "CCustomTypeHtml",
+            "GetUserTypeDescription"
+        );
         return true;
     }
 
@@ -107,15 +109,7 @@ class newModule extends CModule
 
     function InstallEvents()
     {
-//        EventManager::getInstance()->registerEventHandler(
-//            "main",
-//            "CIBlockPropertyCProp",
-//            $this->MODULE_ID,
-//            "lib\CIBlockPropertyCProp",
-//            "appendScriptsToPage"
-//        );
-
-        $classHandler = 'CIBlockPropertyCProp';
+        $classHandler = 'CIBlockPropertyCprop';
         $eventManager = EventManager::getInstance();
 
         $arEvents = $this->getEvents();
@@ -134,7 +128,7 @@ class newModule extends CModule
 
     function UnInstallEvents()
     {
-        $classHandler = 'CIBlockPropertyCProp';
+        $classHandler = 'CIBlockPropertyCprop';
         $eventManager = EventManager::getInstance();
 
         $arEvents = $this->getEvents();
